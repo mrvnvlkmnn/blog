@@ -1,11 +1,13 @@
 body {
     margin: 0;
-    background-color: #00bcd4;
+    /* background-color: #00bcd4; */
+    background-color: white;
 }
 
 body.darkmode {
     color: white;
-    background-color: #001b1e;
+    /* background-color: #001b1e; */
+    background-color: #292929;
 }
 
 

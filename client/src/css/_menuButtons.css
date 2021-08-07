@@ -10,7 +10,7 @@
     background-color: #ef9a9a !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: none;
-    transition: transform .5s ease-in-out;
+    transition: transform .5s ease-in-out, background-color .5s ease-in-out;
 }
 
 .menu-buttons .btn.darkmode {
@@ -21,9 +21,11 @@
 .menu-buttons .btn:hover {
     transform: scale(1.3);
     color: black !important;
+    background-color: #ba6b6c !important;
 }
 
 .menu-buttons .btn.darkmode:hover {
     transform: scale(1.3);
     color: white !important;
+    background-color: #1a0f0f !important;
 }

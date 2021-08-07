@@ -6,7 +6,8 @@
 }
 
 .header {
-    background-color: white;
+    /* background-color: white; */
+    background-color: #ef9a9a;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: fixed;
     /* width: min(90%, 100rem); */
@@ -19,7 +20,8 @@
   }
 
   .header.darkmode {
-      background-color: #292929;
+      /* background-color: #292929; */
+      background-color: #221616;
   }
   
   .header ul {
@@ -27,13 +29,14 @@
     padding: 0;
     list-style: none;
     overflow: hidden;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: #ef9a9a;
   }
   
   .header li a {
     display: block;
     padding: 20px 20px;
-    border-right: 1px solid #f4f4f4;
+    /* border-right: 1px solid #f4f4f4; */
     text-decoration: none;
     color: black;
     border: none;
@@ -49,20 +52,23 @@
   .header.darkmode .logo,
   .header.darkmode li a {
       color: white;
-      background: #292929;
+      /* background: #292929; */
+      background-color: #221616;
   }
   
   .header .logo:hover,
   .header li a:hover,
   .header .menu-btn:hover {
     /* background-color: #f4f4f4; */
-    background-color: #ffcccb;
+    /* background-color: #ffcccb; */
+    background-color: #ba6b6c;
   }
 
   .header.darkmode .logo:hover,
   .header.darkmode li a:hover,
   .header.darkmode .menu-btn:hover {
-      background-color: #241d1d;
+      /* background-color: #241d1d; */
+      background-color: #1a0f0f;
   }
   
   .header .logo {
