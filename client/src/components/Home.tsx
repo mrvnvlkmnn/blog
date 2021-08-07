@@ -4,8 +4,10 @@ import { Button } from 'primereact/button';
 
 export const Home = () => {
     return(
-        <div className="home">
-            home
+        <div className="home-wrapper">
+            <div className="home">
+                Test
+            </div>
         </div>
     )
 }

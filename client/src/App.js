@@ -4,9 +4,10 @@ import { About } from './components/About';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { MenuButtons } from './components/MenuButtons';
+import { Login } from './components/Login';
 
 export const App = () => {
-    const [isDarkmode, setIsDarkmode] = React.useState(false);
+    const [isDarkmode, setIsDarkmode] = React.useState(true);
     const bodyElement = document.body;
 
     React.useEffect(() => {
@@ -27,10 +28,15 @@ export const App = () => {
             <Header darkMode={isDarkmode}/>
             <Switch>
                 <Route exact path="/about" component={About} />
-                <Route path="/" component={Home} />
+                <Route exact path="/login" render={() => (
+                    <Login darkMode={isDarkmode}/>
+                )}/>
+                {/* <Route exact path="/login" component={Login} /> */}
+                <Route path="/" render={() => (
+                    <Home darkMode={isDarkmode} />
+                )}/>
             </Switch>
             <MenuButtons darkMode={isDarkmode} changeMode={handleCallback}/>
-            {isDarkmode ? "true" : "false"}
         </HashRouter>
     </div>
 )

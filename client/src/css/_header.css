@@ -16,11 +16,9 @@
     padding: 1rem;
     margin: 1rem;
     border-radius: 10px;
-    /* transition: all .5s ease-in-out; */
   }
 
   .header.darkmode {
-      /* background-color: #292929; */
       background-color: #221616;
   }
   
@@ -29,8 +27,6 @@
     padding: 0;
     list-style: none;
     overflow: hidden;
-    /* background-color: #fff; */
-    background-color: #ef9a9a;
   }
   
   .header li a {

@@ -18,6 +18,7 @@ export const Header = (props: Props) => {
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/careers">Careers</NavLink></li>
                     <li><NavLink to="/contact">Contact</NavLink></li>
+                    <li><NavLink to="/login"><span className="pi pi-user" /></NavLink></li>
                 </ul>
             </div>
         </div>
