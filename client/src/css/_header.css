@@ -1,0 +1,182 @@
+/* header */
+
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: fixed;
+    /* width: min(90%, 100rem); */
+    width: 95%;
+    z-index: 3;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    /* transition: all .5s ease-in-out; */
+  }
+
+  .header.darkmode {
+      background-color: #292929;
+  }
+  
+  .header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  .header li a {
+    display: block;
+    padding: 20px 20px;
+    border-right: 1px solid #f4f4f4;
+    text-decoration: none;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    /* transition: all .5s ease-in-out; */
+  }
+/* 
+  .header li {
+    transition: all .5s ease-in-out;
+  } */
+
+  .header.darkmode li,
+  .header.darkmode .logo,
+  .header.darkmode li a {
+      color: white;
+      background: #292929;
+  }
+  
+  .header .logo:hover,
+  .header li a:hover,
+  .header .menu-btn:hover {
+    /* background-color: #f4f4f4; */
+    background-color: #ffcccb;
+  }
+
+  .header.darkmode .logo:hover,
+  .header.darkmode li a:hover,
+  .header.darkmode .menu-btn:hover {
+      background-color: #241d1d;
+  }
+  
+  .header .logo {
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    /* transition: all .5s ease-in-out; */
+  }
+
+  /* .header .logo:hover {
+      background-color: #ffcccb;
+  } */
+  
+  /* menu */
+  
+  .header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+  }
+  
+  /* menu icon */
+  
+  .header .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+  }
+  
+  .header .menu-icon .navicon {
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+    /* transition: all .5s ease-in-out; */
+  }
+  
+  .header .menu-icon .navicon:before,
+  .header .menu-icon .navicon:after {
+    background: #333;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: min(90%, 70rem);
+    /* transition: all .5s ease-in-out; */
+  }
+
+  .header.darkmode .menu-icon .navicon,
+  .header.darkmode .menu-icon .navicon:before,
+  .header.darkmode .menu-icon .navicon:after {
+      background: white;
+  }
+  
+  .header .menu-icon .navicon:before {
+    top: 5px;
+  }
+  
+  .header .menu-icon .navicon:after {
+    top: -5px;
+  }
+  
+  /* menu btn */
+  
+  .header .menu-btn {
+    display: none;
+  }
+  
+  .header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+  }
+  
+  .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+  .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+  }
+  
+  /* 48em = 768px */
+  
+  @media (min-width: 48em) {
+    .header li {
+      float: left;
+    }
+    .header li a {
+      padding: 20px 30px;
+    }
+    .header .menu {
+      clear: none;
+      float: right;
+      max-height: none;
+    }
+    .header .menu-icon {
+      display: none;
+    }
+  }

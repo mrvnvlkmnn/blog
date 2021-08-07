@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    background-color: #00bcd4;
+}
+
+body.darkmode {
+    color: white;
+    background-color: #001b1e;
+}
+
+
+/* #root {
+    margin: 0;
+    color: black;
+    background-color: white;
+} */

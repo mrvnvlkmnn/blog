@@ -1,0 +1,11 @@
+/* Primereact */
+@import '~primereact/resources/themes/saga-blue/theme.css';
+@import '~primereact/resources/primereact.min.css';
+@import '~primeicons/primeicons.css';
+
+/* Styles */
+@import '_background.css';
+@import '_header.css';
+@import '_style.css';
+@import '_home.css';
+@import '_menuButtons.css';
