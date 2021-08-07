@@ -28,3 +28,14 @@
 .p-float-label {
     margin-bottom: 2rem;
 }
+
+.login-checkbox {
+    color:black;
+}
+.login-checkbox.darkmode {
+    color: white;
+}
+
+.submit-btn {
+    margin-top: 2rem;
+}

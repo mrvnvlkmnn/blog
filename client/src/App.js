@@ -31,7 +31,6 @@ export const App = () => {
                 <Route exact path="/login" render={() => (
                     <Login darkMode={isDarkmode}/>
                 )}/>
-                {/* <Route exact path="/login" component={Login} /> */}
                 <Route path="/" render={() => (
                     <Home darkMode={isDarkmode} />
                 )}/>

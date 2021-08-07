@@ -1,0 +1,36 @@
+:root {
+    /* Lightmode */
+    --main-color: #c5e1a5;
+    --light-color: #f8ffd7;
+    --dark-color: #94af76;
+
+    /* Darkmode */
+    --main-color-darkmode: #1c2017;
+    --light-color-darkmode: #23241e;
+    --dark-color-darkmode: #151911;
+}
+
+.inputText {
+    background-color: white;
+    border-radius: 10px;
+}
+.inputText:hover {
+    border-color: var(--main-color) !important;
+}
+.inputText:focus {
+    box-shadow: 0 0 0 0.2rem var(--light-color) !important;
+    border-color: var(--main-color) !important;
+}
+
+.inputText.darkmode {
+    background-color: #292929;
+    border-color: #a4afba;
+    color: white;
+}
+.inputText.darkmode:focus {
+    box-shadow: 0 0 0 0.2rem var(--main-color) !important;
+    border-color: var(--dark-color) !important;
+}
+.p-float-label.darkmode > label {
+    color: #a4afba !important;
+}
