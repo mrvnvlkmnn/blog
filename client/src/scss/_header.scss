@@ -15,11 +15,11 @@
 .header-wrapper {
     display: flex;
     justify-content: center;
-}
 
-.header {
-    /* background-color: var(--main-color); */
-    background: linear-gradient(to right, var(--main-color), var(--dark-color));
+  .header {
+    /* background-color: white; */
+    /* background-color: #ef9a9a; */
+    background-color: var(--main-color);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     position: fixed;
     /* width: min(90%, 100rem); */
@@ -32,7 +32,7 @@
 
   .header.darkmode {
       /* background-color: #221616; */
-      /* background-color: var(--main-color); */
+      background-color: var(--main-color);
   }
   
   .header ul {
@@ -52,7 +52,7 @@
     border-radius: 10px;
     /* transition: all .5s ease-in-out; */
   }
-/* 
+  /* 
   .header li {
     transition: all .5s ease-in-out;
   } */
@@ -61,24 +61,24 @@
   .header.darkmode .logo,
   .header.darkmode li a {
       color: black;
-      background-color: transparent;
+      /* background: #292929; */
+      /* background-color: #221616; */
+      background-color: var(--main-color);
   }
   
+  .header .logo:hover,
   .header li a:hover,
   .header .menu-btn:hover {
     /* background-color: #ba6b6c; */
-    background-color: transparent;
-  }
-
-  .header .logo:hover {
     background-color: var(--dark-color);
   }
 
+  .header.darkmode .logo:hover,
   .header.darkmode li a:hover,
   .header.darkmode .menu-btn:hover {
       /* background-color: #241d1d; */
       /* background-color: #1a0f0f; */
-      background-color: var(--main-color);
+      background-color: var(--dark-color);
   }
   
   .header .logo {
@@ -197,7 +197,7 @@
     }
     .user-login-animation {
       background-size: 100% 200%; 
-      background-image: linear-gradient(to bottom, transparent 50%, #292929 50%);
+      background-image: linear-gradient(to bottom, var(--main-color) 50%, #292929 50%);
       transition: 
         background-position .5s ease-in-out, 
         color .4s ease-in-out;
@@ -207,6 +207,6 @@
     .user-login-animation:focus {
       background-position: 0 100%;
       color: white !important;
-      background-color: transparent;
     }
   }
+}
