@@ -1,18 +1,23 @@
-/* Primereact */
+// Primereact
 @import '~primereact/resources/themes/saga-blue/theme.css';
 @import '~primereact/resources/primereact.min.css';
 @import '~primeicons/primeicons.css';
 
-/* Styles */
-@import '_background.scss';
-@import '_header.scss';
-@import '_style.scss';
-@import '_home.scss';
-@import '_menuButtons.scss';
-@import '_login.scss';
+// Variables
+@import 'variables.scss';
 
-/* Components */
+// Styles
+@import './pages/_background.scss';
+@import './pages/_header.scss';
+@import './pages/_home.scss';
+@import './pages/_menuButtons.scss';
+@import './pages/_login.scss';
+
+// Components
 @import './components/_button.scss';
 @import './components/_textInput.scss';
 @import './components/_checkbox.scss';
 @import './components/_toast.scss';
+
+// General Style
+@import '_style.scss';

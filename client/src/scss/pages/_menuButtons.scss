@@ -1,0 +1,28 @@
+.menu-buttons {
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+
+    .btn {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 10px;
+        color: $text-color;
+        background-color: $main-color !important;
+        box-shadow: $shadow;
+        border: none;
+        transition: transform .5s ease-in-out, background-color .5s ease-in-out;
+
+        &.darkmode {
+            color: $text-color;
+            background-color: $main-color !important;
+        }
+
+        &.darkmode:hover,
+        &:hover {
+            transform: scale(1.3);
+            color: $text-color !important;
+            background-color: $dark-color !important;
+        }
+    }
+}

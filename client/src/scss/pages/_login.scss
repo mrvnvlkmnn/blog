@@ -8,16 +8,16 @@
 .login {
     display: flex;
     justify-content: center;
-    color: black;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: $text-color;
+    background-color: $neutral-background-color;
+    box-shadow: $shadow;
     width: 90%;
     border-radius: 10px;
     padding: 3rem;
 }
 
 .login.darkmode {
-    background-color: #292929;
+    background-color: $content-background-color-darkmode;
 }
 
 .login-form {
@@ -30,10 +30,10 @@
 }
 
 .login-checkbox {
-    color:black;
+    color:$text-color;
 }
 .login-checkbox.darkmode {
-    color: white;
+    color: $text-color-darkmode;
 }
 
 .submit-btn {

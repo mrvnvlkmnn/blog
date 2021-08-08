@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    background-color: $neutral-background-color;
+}
+
+body.darkmode {
+    color: $text-color-darkmode;
+    background-color: $neutral-background-color-darkmode;
+}

@@ -1,54 +1,48 @@
-:root {
-    /* Lightmode */
-    --main-color: #c5e1a5;
-    --light-color: #f8ffd7;
-    --dark-color: #94af76;
+.p-checkbox {
 
-    /* Darkmode */
-    --main-color-darkmode: #1c2017;
-    --light-color-darkmode: #23241e;
-    --dark-color-darkmode: #151911;
-}
+    .p-checkbox-box {
+        border-radius: 6px;
+        background-color: $neutral-background-color !important;
 
-.p-checkbox .p-checkbox-box {
-    border-radius: 6px;
-    background-color: white !important;
-}
+        &.p-highlight {
+            border-color: $main-color;
+            color: $dark-color !important;
+            background-color: $main-color !important;
+        }
+        &.p-highlight:hover {
+            border-color: $dark-color !important;
+        }
 
-.p-checkbox .p-checkbox-box.p-highlight {
-    border-color: var(--main-color);
-    color: var(--dark-color) !important;
-    background-color: var(--main-color) !important;
-}
-.p-checkbox .p-checkbox-box.p-highlight:hover {
-    border-color: var(--dark-color) !important;
-}
+        .p-checkbox-icon {
+            color: $text-color;
+        }
+    }
 
-.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-    border-color: var(--dark-color) !important;
-}
+    &:not(.p-checkbox-disabled) {
 
-.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
-    border-color: var(--dark-color) !important;
-}
+        .p-checkbox-box.p-highlight:hover {
+            border-color: $dark-color !important;
+        }
 
-.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
-    border-color: var(--main-color);
-    box-shadow: 0 0 0 0.2rem var(--light-color);
-}
-.login-checkbox.darkmode .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
-    border-color: var(--dark-color);
-    box-shadow: 0 0 0 0.2rem var(--main-color);
-}
+        .p-checkbox-box:hover {
+            border-color: $dark-color !important;
+        }
 
-.p-checkbox .p-checkbox-box .p-checkbox-icon {
-    color: black;
-}
+        .p-checkbox-box.p-focus {
+            border-color: $main-color;
+            box-shadow: 0 0 0 0.2rem $light-color;
+        }
+        .login-checkbox.darkmode & .p-checkbox-box.p-focus {
+            border-color: $dark-color;
+            box-shadow: 0 0 0 0.2rem $main-color;
+        }
+    }
 
-.login-checkbox.darkmode .p-checkbox .p-checkbox-box {
-    background-color: #292929 !important;
-    border-color: #a4afba;
-}
-.login-checkbox.darkmode .p-checkbox .p-checkbox-box.p-highlight {
-    background-color: var(--main-color) !important;
+    .login-checkbox.darkmode & .p-checkbox-box {
+        background-color: $content-background-color-darkmode !important;
+        border-color: $input-border-color-darkmode;
+    }
+    .login-checkbox.darkmode & .p-checkbox-box.p-highlight {
+        background-color: $main-color !important;
+    }
 }
