@@ -3,16 +3,16 @@
     margin-bottom: 2rem;
     display: flex;
     justify-content: center;
-}
-
-.home {
-    width: 90%;
-    border-radius: 10px;
-    background-color: $content-background-color;
-    padding: 3rem;
-    box-shadow: $shadow;
-}
-
-.home.darkmode {
-    background-color: $content-background-color-darkmode;
+    
+    .home {
+        width: 90%;
+        border-radius: 10px;
+        background-color: $content-background-color;
+        padding: 3rem;
+        box-shadow: $shadow;
+        
+        &.darkmode {
+            background-color: $content-background-color-darkmode;
+        }
+    }
 }

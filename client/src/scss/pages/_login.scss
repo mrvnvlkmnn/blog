@@ -3,39 +3,40 @@
     display: flex;
     justify-content: center;
     height: 80vh;
-}
-
-.login {
-    display: flex;
-    justify-content: center;
-    color: $text-color;
-    background-color: $neutral-background-color;
-    box-shadow: $shadow;
-    width: 90%;
-    border-radius: 10px;
-    padding: 3rem;
-}
-
-.login.darkmode {
-    background-color: $content-background-color-darkmode;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.p-float-label {
-    margin-bottom: 2rem;
-}
-
-.login-checkbox {
-    color:$text-color;
-}
-.login-checkbox.darkmode {
-    color: $text-color-darkmode;
-}
-
-.submit-btn {
-    margin-top: 2rem;
+    
+    .login {
+        display: flex;
+        justify-content: center;
+        color: $text-color;
+        background-color: $content-background-color;
+        box-shadow: $shadow;
+        width: 90%;
+        border-radius: 10px;
+        padding: 3rem;
+        
+        &.darkmode {
+            background-color: $content-background-color-darkmode;
+        }
+    }
+    
+    .login-form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .p-float-label {
+        margin-bottom: 2rem;
+    }
+    
+    .login-checkbox {
+        color:$text-color;
+        
+        &.darkmode {
+            color: $text-color-darkmode;
+        }
+    }
+    
+    .submit-btn {
+        margin-top: 2rem;
+    }
 }
