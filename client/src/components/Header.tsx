@@ -7,7 +7,7 @@ interface Props {
 
 export const Header = (props: Props) => {
 
-    const darkmode = `${props.darkMode ? 'darkmode' : ''}`
+    const darkmode = props.darkMode ? 'darkmode' : ''
 
     return(
         <div className="header-wrapper">
