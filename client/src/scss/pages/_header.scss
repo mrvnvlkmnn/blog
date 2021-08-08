@@ -29,7 +29,7 @@
             display: block;
             padding: 20px 20px;
             text-decoration: none;
-            color: black;
+            color: $text-color;
             border: none;
             border-radius: 10px;
         }
@@ -59,7 +59,7 @@
             font-size: 2em;
             padding: 10px 20px;
             text-decoration: none;
-            color: black;
+            color: $text-color;
             border-radius: 10px;
         }
 
@@ -73,7 +73,6 @@
         // menu icon
         .menu-icon {
             cursor: pointer;
-            display: inline-block;
             float: right;
             padding: 28px 20px;
             position: relative;
@@ -118,7 +117,7 @@
         .menu-btn {
             display: none;
 
-            &:checked ~ menu {
+            &:checked ~ .menu {
                 max-height: 300px;
             }
 
