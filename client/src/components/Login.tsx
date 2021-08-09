@@ -14,6 +14,7 @@ export const Login = (props: Props) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [usersList, setUsersList] = useState([]);
+    const localhost = "http://localhost:3001";
 
     useEffect(()=>{
         Axios.get("http://localhost:3001/api/getUsers").then((data)=>{
@@ -28,11 +29,11 @@ export const Login = (props: Props) => {
     const submitLogin = (e: any) => {
         e.preventDefault();
         //toast?.current?.show({severity: 'success', summary: "Successful Login", detail: "You are now logged in", life: 3000});
-        const localhost = "http://localhost:3001";
         
-        Axios.get(localhost + "/api/getUsers").then((data) => {
-            console.log(data.data);
-        })
+        Axios.post(localhost + "/api/createUser", {
+            username: username,
+            password: password,
+        });
     }
 
     return(

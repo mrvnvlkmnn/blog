@@ -24,17 +24,18 @@ app.get("/api/getUsers", (req, res) => {
 })
 
 
-app.post("/api/insert", (req, res) => {
+app.post("/api/createUser", (req, res) => {
     
-    const userName = req.body.userName;
+    const username = req.body.username;
     const password = req.body.password;
-    const email = "test@test.de";
+    const email = "test@test.des";
 
-    const sqlInsert = "INSERT INTO users (username, title, name) VALUES (?, ?, ?)"
-    mysql.query(sqlInsert, [userName, password, email], (err, result) => {
+    const sqlInsert = "INSERT INTO users (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)"
+    db.query(sqlInsert, [username, "Marvin", "Volkmann", email, password], (err, result) => {
         console.log(err)
     } )
 });
+
 app.get("/", (req, res) => {
     const sql = db.query("SELECT * FROM users", (err, result, fields) => {
         res.send(result)
