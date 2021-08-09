@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
 import Axios from "axios";
@@ -13,16 +13,27 @@ export const Login = (props: Props) => {
     const [rememberMe, setRememberMe] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [usersList, setUsersList] = useState([]);
+
+    useEffect(()=>{
+        Axios.get("http://localhost:3001/api/getUsers").then((data)=>{
+        setUsersList(data.data)
+        console.log(data)
+        });
+        },[])
 
     const darkmode = props.darkMode ? 'darkmode' : ''
     const toast = useRef<any>(null);
 
     const submitLogin = (e: any) => {
         e.preventDefault();
-        toast?.current?.show({severity: 'success', summary: "Successful Login", detail: "You are now logged in", life: 3000});
-        Axios.post("http://localhost:3001/api/login", [username, password])
+        //toast?.current?.show({severity: 'success', summary: "Successful Login", detail: "You are now logged in", life: 3000});
+        const localhost = "http://localhost:3001";
+        
+        Axios.get(localhost + "/api/getUsers").then((data) => {
+            console.log(data.data);
+        })
     }
-    
 
     return(
         <div className="login-wrapper">
@@ -45,7 +56,7 @@ export const Login = (props: Props) => {
                     </div>
                 </form>
             </div>
-            <Toast ref={toast} position="bottom-left"/>
+            {/* <Toast ref={toast} position="bottom-left"/> */}
         </div>
     )
 }

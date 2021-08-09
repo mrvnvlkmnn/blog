@@ -1,30 +1,56 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
-const app = express();
 const mysql = require('mysql');
 
-const db = mysql.createPool({
+const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
     database: 'blog' ,
 });
 
-app.use(cors);
+const app = express();
+
+app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
-app.post("/api/insertPost", (req, res) => {
-    const user_id = req.body.user_id;
-    const title = req.body.title;
-    const content = req.body.content;
+app.get("/api/getUsers", (req, res) => {
+    db.query("SELECT * FROM users", (err, result) => {
+        if(err) {
+            console.log(err)
+        }
+    res.send(result);
+    })
+})
 
-    const sqlInsert = "INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)"
-    mysql.query(sqlInsert, [user_id, title, content], (err, result) => {
+
+app.post("/api/insert", (req, res) => {
+    
+    const userName = req.body.userName;
+    const password = req.body.password;
+    const email = "test@test.de";
+
+    const sqlInsert = "INSERT INTO users (username, title, name) VALUES (?, ?, ?)"
+    mysql.query(sqlInsert, [userName, password, email], (err, result) => {
         console.log(err)
     } )
 });
+app.get("/", (req, res) => {
+    const sql = db.query("SELECT * FROM users", (err, result, fields) => {
+        res.send(result)
+    });
+})
+/*
+app.post('/api/loginUser', (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    console.log(username, password);
+
+    const checkLogin = "SELECT username, password FROM users WHERE username LIKE ?";
+    mysql.query(checkLogin, username, (err, result) => {
+        console.log(result);
+    })
+})*/
 
 
 app.listen(3001, () => {
