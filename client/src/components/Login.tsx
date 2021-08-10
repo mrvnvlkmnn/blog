@@ -40,20 +40,19 @@ export const Login = (props: Props) => {
         });
 
         // Fehlt:
-        // positiveStatus
         // response.data.errors
         // response.data.username
         loginService.login({username: username, password: password})
         .then(response => {
-            const positiveStatus = 200;
+            const POSITIVE_STATUS_UPPER_BORDER = 299;
+            const NEGATIVE_STATUS_LOWER_BORDER = 400;
 
             console.log(response);
-            if (response.status > positiveStatus) {
+            if (response.status >= NEGATIVE_STATUS_LOWER_BORDER) {
                 setErrors(response.data?.errors)
             } else {
                 toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.username}. You are now successfully logged in`});
             }
-
         })
         .catch(err => {
             console.log(err);
