@@ -16,24 +16,22 @@ export const Login = (props: Props) => {
     const [usersList, setUsersList] = useState([]);
     const localhost = "http://localhost:3001";
 
-    useEffect(()=>{
-        Axios.get("http://localhost:3001/api/getUsers").then((data)=>{
-        setUsersList(data.data)
-        console.log(data)
-        });
-        },[])
-
     const darkmode = props.darkMode ? 'darkmode' : ''
     const toast = useRef<any>(null);
 
     const submitLogin = (e: any) => {
         e.preventDefault();
-        //toast?.current?.show({severity: 'success', summary: "Successful Login", detail: "You are now logged in", life: 3000});
+        // toast?.current?.show({severity: 'success', summary: "Successful Login", detail: "You are now logged in", life: 3000});
         
-        Axios.post(localhost + "/api/createUser", {
-            username: username,
-            password: password,
-        });
+        if (username === "") {
+            Axios.post(localhost + "/api/createUser", {
+                username: username,
+                password: password,
+            }).catch((error) => {
+                console.log(error);
+                toast?.current?.show({severity: 'error', summary: error.message, detail: error.response.data, life: 3000});
+            });
+        }
     }
 
     return(
@@ -57,7 +55,7 @@ export const Login = (props: Props) => {
                     </div>
                 </form>
             </div>
-            {/* <Toast ref={toast} position="bottom-left"/> */}
+            <Toast ref={toast} position="bottom-left"/>
         </div>
     )
 }
