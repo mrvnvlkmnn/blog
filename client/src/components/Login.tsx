@@ -16,13 +16,6 @@ export const Login = (props: Props) => {
     const [usersList, setUsersList] = useState([]);
     const localhost = "http://localhost:3001";
 
-    useEffect(()=>{
-        Axios.get("http://localhost:3001/api/getUsers").then((data)=>{
-        setUsersList(data.data)
-        console.log(data)
-        });
-        },[])
-
     const darkmode = props.darkMode ? 'darkmode' : ''
     const toast = useRef<any>(null);
 
@@ -57,7 +50,7 @@ export const Login = (props: Props) => {
                     </div>
                 </form>
             </div>
-            {/* <Toast ref={toast} position="bottom-left"/> */}
+            <Toast ref={toast} position="bottom-left"/>
         </div>
     )
 }
