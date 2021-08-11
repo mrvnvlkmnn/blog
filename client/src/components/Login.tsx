@@ -51,6 +51,7 @@ export const Login = (props: Props) => {
             if (response.status >= NEGATIVE_STATUS_LOWER_BORDER) {
                 setErrors(response.data?.errors)
             } else {
+                // window.location.replace("http://localhost:3000");
                 toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.name.charAt(0).toUpperCase() + response.data.name.slice(1)}. You are now successfully logged in`});
                 console.log(response.data.name)
             }
