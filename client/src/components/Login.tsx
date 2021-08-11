@@ -4,16 +4,20 @@ import { Checkbox } from 'primereact/checkbox';
 import Axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
-import { loginService } from '../services/loginService';
+import { authenticationService } from '../services/authenticationService';
 
 interface Props {
     darkMode: boolean
 }
 
 export const Login = (props: Props) => {
+    
+    // credentials
     const [rememberMe, setRememberMe] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+
     const [errors, setErrors] = useState([]);
     // const [usersList, setUsersList] = useState([]);
     const localhost = "http://localhost:3001";
@@ -42,7 +46,8 @@ export const Login = (props: Props) => {
         // Fehlt:
         // response.data.errors
         // response.data.username
-        loginService.login({username: username, password: password})
+        // response.data.rememberMeToken
+        authenticationService.login({username: username, password: password, rememberMe: rememberMe})
         .then(response => {
             const POSITIVE_STATUS_UPPER_BORDER = 299;
             const NEGATIVE_STATUS_LOWER_BORDER = 400;
@@ -52,6 +57,12 @@ export const Login = (props: Props) => {
                 setErrors(response.data?.errors)
             } else {
                 toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.username}. You are now successfully logged in`});
+                if (rememberMe) {
+                    sessionStorage.setItem("rememberMeToken", response.data.rememberMeToken);
+                    const expirationDate = new Date(2999, 12);
+                    console.log(expirationDate);
+                    document.cookie = `rememberMeToken= ${response.data.rememberMeToken}; expires= ${expirationDate};`;
+                }
             }
         })
         .catch(err => {
