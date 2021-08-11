@@ -5,6 +5,7 @@ import Axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { loginService } from '../services/loginService';
+import { stringify } from 'querystring';
 
 interface Props {
     darkMode: boolean
@@ -50,7 +51,7 @@ export const Login = (props: Props) => {
             if (response.status >= NEGATIVE_STATUS_LOWER_BORDER) {
                 setErrors(response.data?.errors)
             } else {
-                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.name}. You are now successfully logged in`});
+                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.name.charAt(0).toUpperCase() + response.data.name.slice(1)}. You are now successfully logged in`});
                 console.log(response.data.name)
             }
         })

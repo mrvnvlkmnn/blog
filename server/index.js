@@ -35,7 +35,12 @@ app.post("/api/loginUser", (req, res) => {
             const result = JSON.stringify(results);
             const json =  JSON.parse(result);
             console.log(json[0].surname);
-            res.send({name: json[0].surname});
+            res.send({
+                username: json[0].username,
+                name: json[0].name,
+                surname: json[0].surname,
+                email: json[0].email,
+            });
     })
 })
 
