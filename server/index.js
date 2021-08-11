@@ -45,7 +45,7 @@ app.post("/api/loginUser", (req, res) => {
             const result = JSON.stringify(results);
             const json =  JSON.parse(result);
             if (token) {
-                if (json[0].password.equals(token)) {
+                if (Object.is(json[0].password, token)) {
                     res.status(200).send({
                         username: json[0].username,
                         name: json[0].name,
