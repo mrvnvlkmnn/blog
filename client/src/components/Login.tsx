@@ -57,10 +57,9 @@ export const Login = (props: Props) => {
             } else {
                 toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.username}. You are now successfully logged in`});
                 if (rememberMe) {
-                    sessionStorage.setItem("rememberMeToken", response.data.rememberMeToken);
                     const expirationDate = new Date(2999, 12);
                     console.log(expirationDate);
-                    document.cookie = `rememberMeToken= ${response.data.rememberMeToken}; expires= ${expirationDate};`;
+                    document.cookie = `rememberMeToken= ${response.data.rememberMeToken}; username=${response.data.username}; expires= ${expirationDate};`;
                 }
             }
         })

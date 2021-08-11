@@ -26,24 +26,44 @@ app.get("/api/getUsers", (req, res) => {
 
 
 app.post("/api/loginUser", (req, res) => {
-    const username = req.body.username;
+    const username = req.headers.username || req.body.username;
     const password = req.body.password;
+    const rememberMe = req.body.rememberMe;
+    const token = req.headers.rememberMeToken;
 
     db.query(
         "SELECT * FROM users WHERE username=?",
         [username], 
         (err, results) => {
+            if (err) {
+                console.log(err);
+                res.status(400).send({
+                    error: 'There was an error processing your request. '
+                })
+            }
+
             const result = JSON.stringify(results);
             const json =  JSON.parse(result);
+            if (token) {
+                if (json[0].password.equals(token)) {
+                    res.status(200).send({
+                        username: json[0].username,
+                        name: json[0].name,
+                        surname: json[0].surname,
+                        email: json[0].email
+                    })
+                }
+            }
 
             if(json.length > 0){
                 bcrypt.compare(password, json[0].password).then((result) => {
                     if(result){
-                        res.send({
+                        res.status(200).send({
                             username: json[0].username,
                             name: json[0].name,
                             surname: json[0].surname,
                             email: json[0].email,
+                            rememberMeToken: rememberMe ? 'aToken': ''
                         });
                     }
                 });
@@ -86,32 +106,6 @@ app.post('/api/loginUser', (req, res) => {
         console.log(result);
     })
 })*/
-
-app.post("/api/loginUser", (req, res) => {
-
-    const username = req.body.username;
-    const password = req.body.password;
-    const rememberMe = req.body.rememberMe;
-    const token = req.headers.rememberMeToken;
-
-    const sqlSelect = "SELECT * FROM users WHERE username=?";
-    db.query(sqlSelect, [username], (err, result, fields) => {
-        if (err) {
-            console.log(err);
-            res.status(400).send("Login unsuccessful");
-        }
-        if (result.password && password) { // hash password
-            if (token) {
-                // verify Token
-            }
-            if (rememberMe) {
-                res.status(200).send({ rememberMeToken: "aToken"});
-            }
-            res.status(200).send();
-        }
-    })
-})
-
 
 app.listen(3001, () => {
     console.log("running on port 3001");
