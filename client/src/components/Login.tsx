@@ -29,15 +29,14 @@ export const Login = (props: Props) => {
         e.preventDefault();
         // toast?.current?.show({severity: 'success', summary: "Successful Login", detail: "You are now logged in", life: 3000});
         
-        Axios
-        .post(localhost + "/api/createUser", {
-            username: username,
-            password: password,
-        }, { timeout: 3000 })
-        .catch((error) => {
-            console.log(error);
-            toast?.current?.show({severity: 'error', summary: "Error", detail: error.message, life: 3000});
-        });
+        // Axios.post(localhost + "/api/loginUser", {
+        //     username: username,
+        //     password: password,
+        // }, { timeout: 3000 })
+        // .catch((error) => {
+        //     console.log(error);
+        //     toast?.current?.show({severity: 'error', summary: "Error", detail: error.message, life: 3000});
+        // });
 
         // Fehlt:
         // response.data.errors
@@ -47,11 +46,12 @@ export const Login = (props: Props) => {
             const POSITIVE_STATUS_UPPER_BORDER = 299;
             const NEGATIVE_STATUS_LOWER_BORDER = 400;
 
-            console.log(response);
+            // console.log(response);
             if (response.status >= NEGATIVE_STATUS_LOWER_BORDER) {
                 setErrors(response.data?.errors)
             } else {
-                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.username}. You are now successfully logged in`});
+                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.name}. You are now successfully logged in`});
+                console.log(response.data.name)
             }
         })
         .catch(err => {

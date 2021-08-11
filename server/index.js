@@ -24,6 +24,21 @@ app.get("/api/getUsers", (req, res) => {
 })
 
 
+app.post("/api/loginUser", (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    db.query(
+        "SELECT * FROM users WHERE username=? AND password=?",
+        [username, password], 
+        (err, results) => {
+            const result = JSON.stringify(results);
+            const json =  JSON.parse(result);
+            console.log(json[0].surname);
+            res.send({name: json[0].surname});
+    })
+})
+
 app.post("/api/createUser", (req, res) => {
     
     const username = req.body.username;
