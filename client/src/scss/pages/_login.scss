@@ -6,7 +6,7 @@
     
     .login {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         color: $text-color;
         background-color: $content-background-color;
         box-shadow: $shadow;
@@ -16,7 +16,29 @@
         
         &.darkmode {
             background-color: $content-background-color-darkmode;
+            color: $text-color-darkmode;
         }
+    }
+
+    .register-now {
+        margin-top: 2rem;
+
+        a {
+            color: $main-color;
+        }
+        a:hover {
+            color: $dark-color;
+        }
+
+    }
+
+    .optional {
+        margin-top: 1rem;
+        font-size: small;
+    }
+
+    .login-header {
+        margin-bottom: 3rem;
     }
     
     .login-form {
@@ -38,5 +60,16 @@
     
     .submit-btn {
         margin-top: 2rem;
+    }
+}
+
+@media (max-width: 48em) {
+    .login-wrapper .login {
+        display: block;
+        
+        .login-form {
+            margin-bottom: 3rem;
+        }
+
     }
 }

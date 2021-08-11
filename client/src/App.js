@@ -5,6 +5,7 @@ import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { MenuButtons } from './components/MenuButtons';
 import { Login } from './components/Login';
+import { Register } from './components/Register';
 
 export const App = () => {
     const [isDarkmode, setIsDarkmode] = React.useState(true);
@@ -30,6 +31,9 @@ export const App = () => {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/login" render={() => (
                     <Login darkMode={isDarkmode}/>
+                    )}/>
+                <Route exact path="/register" render={() => (
+                    <Register darkMode={isDarkmode}/>
                 )}/>
                 <Route path="/" render={() => (
                     <Home darkMode={isDarkmode} />

@@ -28,6 +28,8 @@ app.get("/api/getUsers", (req, res) => {
     })
 })
 
+const SALT_ROUNDS = 10;
+
 // Login User
 app.post("/api/loginUser", (req, res) => {
     const username = req.headers.username || req.body.username;
@@ -48,7 +50,6 @@ app.post("/api/loginUser", (req, res) => {
 
             const result = JSON.stringify(results);
             const json =  JSON.parse(result);
-            console.log(json);
             if (token) {
                 if (Object.is(json[0].password, token)) {
                     console.log("Sending Response back to Frontend")
@@ -62,7 +63,7 @@ app.post("/api/loginUser", (req, res) => {
             }
 
             if(json.length > 0){
-                
+
                 bcrypt.compare(password, json[0].password).then((result) => {
                     if(result){
                         res.status(200).send({
@@ -88,16 +89,19 @@ app.post("/api/registerUser", (req, res) => {
         if (err) {
             res.status(400).send("Register unsuccessful");
         }
-        const [username, name, surname, email] = req.body;
         const password =  hash;
-        // const username = req.body.username;
+        const username = req.body.username;
+        const name = req.body.name;
+        const surname = req.body.surname;
+        const email = req.body.email;
+        const rememberMe = req.body.rememberMe;
         // const email = "test@test.coms";
         
         const sqlInsert = "INSERT INTO users (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)"
         db.query(sqlInsert, [username, name, surname, email, password], (err, result) => {
             if (err) {
-                console.log(err)
-                res.status(400).send("An Error occured while processing");
+                console.log("Error: " + err)
+                res.status(400).send({ message: "An Error occured while processing"});
             }
             res.status(200).send({ username: username, name: name, surname: surname, email: email});
         } )
