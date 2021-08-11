@@ -5,6 +5,7 @@ import Axios from "axios";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { authenticationService } from '../services/authenticationService';
+import { stringify } from 'querystring';
 
 interface Props {
     darkMode: boolean
@@ -33,15 +34,13 @@ export const Login = (props: Props) => {
         e.preventDefault();
         // toast?.current?.show({severity: 'success', summary: "Successful Login", detail: "You are now logged in", life: 3000});
         
-        Axios
-        .post(localhost + "/api/createUser", {
-            username: username,
-            password: password,
-        }, { timeout: 3000 })
-        .catch((error) => {
-            console.log(error);
-            toast?.current?.show({severity: 'error', summary: "Error", detail: error.message, life: 3000});
-        });
+        // Axios.post(localhost + "/api/createUser", {
+        //     username: username,
+        //     password: password,
+        // }, { timeout: 3000 })
+        // .catch((error) => {
+        //     console.log(error);
+        // });
 
         // Fehlt:
         // response.data.errors
@@ -52,7 +51,7 @@ export const Login = (props: Props) => {
             const POSITIVE_STATUS_UPPER_BORDER = 299;
             const NEGATIVE_STATUS_LOWER_BORDER = 400;
 
-            console.log(response);
+            // console.log(response);
             if (response.status >= NEGATIVE_STATUS_LOWER_BORDER) {
                 setErrors(response.data?.errors)
             } else {
@@ -66,7 +65,8 @@ export const Login = (props: Props) => {
             }
         })
         .catch(err => {
-            console.log(err);
+            console.log(err.stack);
+            console.log(Response)
             // setErrors(prevErr => prevErr)
             toast?.current?.show({severity: 'error', summary: "Error", detail: err.message, life: 3000});
         });

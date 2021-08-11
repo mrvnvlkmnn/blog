@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
+const bcrypt = require('bcrypt')
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -24,16 +25,49 @@ app.get("/api/getUsers", (req, res) => {
 })
 
 
-app.post("/api/createUser", (req, res) => {
-    
+app.post("/api/loginUser", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    const email = "test@test.des";
 
-    const sqlInsert = "INSERT INTO users (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)"
-    db.query(sqlInsert, [username, "Marvin", "Volkmann", email, password], (err, result) => {
-        console.log(err)
-    } )
+    db.query(
+        "SELECT * FROM users WHERE username=?",
+        [username], 
+        (err, results) => {
+            const result = JSON.stringify(results);
+            const json =  JSON.parse(result);
+
+            if(json.length > 0){
+                bcrypt.compare(password, json[0].password).then((result) => {
+                    if(result){
+                        res.send({
+                            username: json[0].username,
+                            name: json[0].name,
+                            surname: json[0].surname,
+                            email: json[0].email,
+                        });
+                    }
+                });
+            }else{
+                res.status(409).send({
+                    error: 'Password does not match'
+                });
+            }
+    })
+})
+
+app.post("/api/createUser", (req, res) => {
+    const saltRounds = 10;
+    bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+        const password =  hash;
+        const username = req.body.username;
+        const email = "test@test.coms";
+        
+        const sqlInsert = "INSERT INTO users (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)"
+        db.query(sqlInsert, [username, "Marvin", "Volkmann", email, password], (err, result) => {
+            console.log(err)
+        } )
+    });
+    
 });
 
 app.get("/", (req, res) => {
