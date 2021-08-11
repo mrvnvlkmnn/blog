@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios'
 
 export type AuthenticationService = {
     login: (credentials : { username: string, password: string , rememberMe: boolean}) => Promise<AxiosResponse<any>>;
-    register: (credentials: { username: string, password: string }) => Promise<AxiosResponse<any>>;
+    register: (credentials: { username: string, name?: string, surname?: string, email: string, password: string }) => Promise<AxiosResponse<any>>;
     changePassword: (credentials: {username: string, oldPassword: string, newPassword: string}) => Promise<AxiosResponse<any>>;
 }
 
@@ -16,7 +16,7 @@ export const authenticationService = new (class AuthenticationServiceLocal imple
         return axios.post(_url, credentials);
     }
 
-    register(credentials: {username: string, password: string}) {
+    register(credentials: { username: string, name?: string, surname?: string, email: string, password: string }) {
         const _url = `${this.url}/api/registerUser`;
         return axios.post(_url, credentials);
     }

@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -15,6 +15,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Wie kann ich AXIOS in anderen Dateien benutzen?
+// export const appServer = app;
+// export const database = db;
+
 app.get("/api/getUsers", (req, res) => {
     db.query("SELECT * FROM users", (err, result) => {
         if(err) {
@@ -24,7 +28,7 @@ app.get("/api/getUsers", (req, res) => {
     })
 })
 
-
+// Login User
 app.post("/api/loginUser", (req, res) => {
     const username = req.headers.username || req.body.username;
     const password = req.body.password;
@@ -44,8 +48,10 @@ app.post("/api/loginUser", (req, res) => {
 
             const result = JSON.stringify(results);
             const json =  JSON.parse(result);
+            console.log(json);
             if (token) {
                 if (Object.is(json[0].password, token)) {
+                    console.log("Sending Response back to Frontend")
                     res.status(200).send({
                         username: json[0].username,
                         name: json[0].name,
@@ -56,6 +62,7 @@ app.post("/api/loginUser", (req, res) => {
             }
 
             if(json.length > 0){
+                
                 bcrypt.compare(password, json[0].password).then((result) => {
                     if(result){
                         res.status(200).send({
@@ -75,20 +82,85 @@ app.post("/api/loginUser", (req, res) => {
     })
 })
 
-app.post("/api/createUser", (req, res) => {
-    const saltRounds = 10;
-    bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+// Register User
+app.post("/api/registerUser", (req, res) => {
+    bcrypt.hash(req.body.password, SALT_ROUNDS, (err, hash) => {
+        if (err) {
+            res.status(400).send("Register unsuccessful");
+        }
+        const [username, name, surname, email] = req.body;
         const password =  hash;
-        const username = req.body.username;
-        const email = "test@test.coms";
+        // const username = req.body.username;
+        // const email = "test@test.coms";
         
         const sqlInsert = "INSERT INTO users (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)"
-        db.query(sqlInsert, [username, "Marvin", "Volkmann", email, password], (err, result) => {
-            console.log(err)
+        db.query(sqlInsert, [username, name, surname, email, password], (err, result) => {
+            if (err) {
+                console.log(err)
+                res.status(400).send("An Error occured while processing");
+            }
+            res.status(200).send({ username: username, name: name, surname: surname, email: email});
         } )
     });
-    
 });
+
+//  Change Password
+app.post("/api/changePassword", (req, res) => {
+    const username = req.body.username; // evtl. sessionToken oder ähnliches verwenden
+    const oldPassword = req.body.oldPassword;
+    const newPassword = req.body.newPassword;
+
+    // Select the user
+    const  sqlSelect = "SELECT * FROM users WHERE users.username=?";
+    db.query(sqlSelect, [username], (err, results) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send({ message: "You must be logged in order to change your password"});
+        }
+        const result = JSON.stringify(results);
+        const json = JSON.parse(result);
+        // Check if given OldPassword is saved OldPassword
+        bcrypt.compare(oldPassword, json[0].password).then((err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(400).send({ message: "Password could not be updated"});
+            }
+            // result is a boolean value
+            if (!result) {
+                res.status(500).send({ message: "Password does not match"});
+            }
+            // At this point, the old Password matched, so the new one can be set
+            const sqlInsert = "UPDATE users SET users.password = (?) WHERE users.username = (?)";
+            db.query(sqlInsert, [newPassword, json[0].username], (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send({ message: "Error setting new Password", passwordUsed: newPassword});
+                }
+                if (result) {
+                    res.status(200).send({ message: "Password was updated"});
+                }
+            })
+        }).catch(err => {
+            console.log(err);
+            res.status(400).send({ message: "Your old Password does not match."});
+        })
+    })
+})
+
+// app.post("/api/createUser", (req, res) => {
+//     const saltRounds = 10;
+//     bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+//         const password =  hash;
+//         const username = req.body.username;
+//         const email = "test@test.coms";
+        
+//         const sqlInsert = "INSERT INTO users (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)"
+//         db.query(sqlInsert, [username, "Marvin", "Volkmann", email, password], (err, result) => {
+//             console.log(err)
+//         } )
+//     });
+    
+// });
 
 app.get("/", (req, res) => {
     const sql = db.query("SELECT * FROM users", (err, result, fields) => {

@@ -27,7 +27,7 @@ export const Login = (props: Props) => {
     const toast = useRef<any>(null);
 
     useEffect(() => {
-        console.log(errors);
+        // console.log(errors);
     }, [errors])
 
     const submitLogin = (e: any) => {
@@ -55,7 +55,7 @@ export const Login = (props: Props) => {
             if (response.status >= NEGATIVE_STATUS_LOWER_BORDER) {
                 setErrors(response.data?.errors)
             } else {
-                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.name.toChar(0).toUpperCase()}. You are now successfully logged in`});
+                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.name.charAt(0).toUpperCase() + response.data.name.slice(1)}. You are now successfully logged in`});
                 // window.location.replace("http://localhost:3000");
                 if (rememberMe) {
                     const expirationDate = new Date(2999, 12);
@@ -65,7 +65,7 @@ export const Login = (props: Props) => {
             }
         })
         .catch(err => {
-            console.log(err.stack);
+            // console.log(err.stack);
             console.log(Response)
             // setErrors(prevErr => prevErr)
             toast?.current?.show({severity: 'error', summary: "Error", detail: err.message, life: 3000});
