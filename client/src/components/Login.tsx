@@ -55,7 +55,8 @@ export const Login = (props: Props) => {
             if (response.status >= NEGATIVE_STATUS_LOWER_BORDER) {
                 setErrors(response.data?.errors)
             } else {
-                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.username}. You are now successfully logged in`});
+                toast.current?.show({ severity: "success", summary: "Successful Login", detail: `Hi ${response.data.name.toChar(0).toUpperCase()}. You are now successfully logged in`});
+                // window.location.replace("http://localhost:3000");
                 if (rememberMe) {
                     const expirationDate = new Date(2999, 12);
                     console.log(expirationDate);
