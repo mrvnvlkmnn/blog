@@ -1,48 +1,42 @@
 .p-checkbox {
 
     .p-checkbox-box {
-        border-radius: 6px;
-        background-color: $neutral-background-color !important;
+        border-radius: 0;
+        background-color: $background-color-content;
+        border-color: $text-color;
 
         &.p-highlight {
-            border-color: $main-color;
-            color: $dark-color !important;
-            background-color: $main-color !important;
+            border-color: $hover-color;
+            background-color: $background-color-content;
         }
         &.p-highlight:hover {
-            border-color: $dark-color !important;
+            border-color: $hover-color !important;
         }
 
         .p-checkbox-icon {
-            color: $text-color;
+            color: $hover-color;
         }
     }
 
     &:not(.p-checkbox-disabled) {
 
         .p-checkbox-box.p-highlight:hover {
-            border-color: $dark-color !important;
+            border-color: $text-color !important;
+            background-color: $background-color-content;
+
+            & > span {
+                color:$text-color;
+            }
         }
 
         .p-checkbox-box:hover {
-            border-color: $dark-color !important;
+            border-color: $hover-color !important;
         }
 
         .p-checkbox-box.p-focus {
-            border-color: $main-color;
-            box-shadow: 0 0 0 0.2rem $light-color;
-        }
-        .login-checkbox.darkmode & .p-checkbox-box.p-focus {
-            border-color: $dark-color;
-            box-shadow: 0 0 0 0.2rem $main-color;
+            border-color: $hover-color;
+            box-shadow: 0 0 0 0.2rem $focus-color;
         }
     }
 
-    .login-checkbox.darkmode & .p-checkbox-box {
-        background-color: $content-background-color-darkmode !important;
-        border-color: $input-border-color-darkmode;
-    }
-    .login-checkbox.darkmode & .p-checkbox-box.p-highlight {
-        background-color: $main-color !important;
-    }
 }

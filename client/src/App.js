@@ -27,6 +27,12 @@ export const App = () => {
     <div id="app">
         <HashRouter>
             <Header darkMode={isDarkmode}/>
+            <div class="background-img">
+            <img 
+            src="https://images.unsplash.com/photo-1572062505547-912c49028cc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDIwfHxkYXJrJTIwbW9kZXxlbnwwfHx8fDE2MTc2MDM0NTI&ixlib=rb-1.2.1&q=80&w=2000"
+            alt="Background"
+            class="img" />    
+            </div>
             <Switch>
                 <Route exact path="/about" component={About} />
                 <Route exact path="/login" render={() => (
@@ -39,7 +45,6 @@ export const App = () => {
                     <Home darkMode={isDarkmode} />
                 )}/>
             </Switch>
-            <MenuButtons darkMode={isDarkmode} changeMode={handleCallback}/>
         </HashRouter>
     </div>
 )

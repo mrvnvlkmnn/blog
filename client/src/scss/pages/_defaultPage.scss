@@ -1,0 +1,14 @@
+.page {
+    display: flex;
+    justify-content: center;
+
+    .page-content {
+        margin-top: 10rem;
+        margin-bottom: 2rem;
+        padding: 3rem;
+        box-shadow: $box-shadow;
+        width: min(90%, 80rem);
+        background: $background-color-content;
+        border-radius: 2px;
+    }
+}

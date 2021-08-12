@@ -1,0 +1,30 @@
+.btn {
+    color: $text-color;
+    border-radius: 10px;
+    border-color: $main-color;
+    background-color: $main-color;
+
+    &:hover {
+        color: $text-color !important;
+        border-color: $dark-color !important;
+        background-color: $dark-color !important;
+    }
+
+    &.darkmode {
+        color: $text-color-darkmode;
+        border-radius: 10px;
+        border-color: $light-color-darkmode;
+        background-color: $light-color-darkmode;
+    }
+    &.darkmode:hover {
+        color: $text-color-darkmode !important;
+        border-color: $dark-color-darkmode !important;
+        background-color: $dark-color-darkmode !important;
+    }
+
+    &:active {
+        color: $text-color-darkmode !important;
+        border-color: $dark-color !important;
+        background-color: $dark-color !important;
+    }
+}

@@ -7,17 +7,35 @@
     @import 'variables.scss';
 
 // Styles
-    @import './pages/_background.scss';
-    @import './pages/_header.scss';
-    @import './pages/_home.scss';
-    @import './pages/_menuButtons.scss';
-    @import './pages/_login.scss';
+
+// To be deleted (Rework)
+// @import './pages/_header.scss';
+// @import './pages/_home.scss';
+// @import './pages/_menuButtons.scss';
+// @import './pages/_login.scss';
+// @import './components/_button.scss';
+// @import './components/_textInput.scss';
+// @import './components/_checkbox.scss';
+// @import './components/_toast.scss';
+
+// Rework
+
+
+    @import './pages/_background';
+    @import './pages/header';
+    @import './pages/defaultPage';
+    @import './pages/login';
 
 // Components
-    @import './components/_button.scss';
-    @import './components/_textInput.scss';
-    @import './components/_checkbox.scss';
-    @import './components/_toast.scss';
+
+    @import './components/button';
+    @import './components/textInput';
+    @import './components/checkbox';
+    @import './components/icons';
 
 // General Style
-    @import '_style.scss';
+    @import 'style';
+
+// Fonts
+    @import url('https://fonts.googleapis.com/css2?family=WindSong:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=WindSong:wght@500&display=swap');

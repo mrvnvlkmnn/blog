@@ -1,27 +1,22 @@
 .inputText {
-    background-color: $neutral-background-color;
-    border-radius: 10px;
 
-    &:hover {
-        border-color: $main-color !important;
-    }
-    &:focus {
-        box-shadow: 0 0 0 0.2rem $light-color !important;
-        border-color: $main-color !important;
-    }
+    font-family: $font;
 
-    &.darkmode {
-        background-color: $content-background-color-darkmode;
-        border-color: $input-border-color-darkmode;
-        color: $text-color-darkmode;
-    
+    &.inputText-login {
+        background-color: $background-color-content;
+        border: none;
+        border-bottom: solid $text-color 2px;
+        border-radius: 0;
+        color: $text-color;
+
+        &:hover {
+            border-color: $hover-color;
+        }
+
         &:focus {
-            box-shadow: 0 0 0 0.2rem $main-color !important;
-            border-color: $dark-color !important;
+            border-color: $hover-color;
+            box-shadow: 0 0 0 0.2rem $focus-color;
         }
     }
-}
 
-.p-float-label.darkmode > label {
-    color: $input-border-color-darkmode !important;
 }
