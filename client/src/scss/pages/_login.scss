@@ -17,5 +17,18 @@
         .login-checkbox {
             color:$text-color;
         }    
+
+        .register-now a {
+            color: $hover-color;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .remember-me-checkbox {
+            margin-bottom: 2rem;
+
+        }
     }
 }

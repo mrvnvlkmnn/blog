@@ -65,30 +65,6 @@ export const Login = (props: Props) => {
     }
 
     return(
-        // <div className="login-wrapper">
-        //     <div className={`login ${darkmode}`}>
-        //         <form className="login-form">
-        //             <div className="login-header">Login</div>
-        //             <span className={`p-float-label ${darkmode}`}>
-        //                 <InputText className={`inputText ${darkmode}`} id="username" onChange={(e) => setUsername(e.target.value)}/>
-        //                 <label htmlFor="username">Username</label>
-        //             </span>
-        //             <span className={`p-float-label ${darkmode}`}>
-        //                 <InputText className={`inputText ${darkmode}`} type="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
-        //                 <label htmlFor="password">Password</label>
-        //             </span>
-        //             <div className={`login-checkbox ${darkmode}`}>
-        //                 <Checkbox className={`checkbox ${darkmode}`} id="login-remember-me" checked={rememberMe} onChange={() => setRememberMe(currentState => !currentState)} />
-        //                 <label htmlFor="login-remember-me">&nbsp;Remember&nbsp;Me</label>
-        //             </div>
-        //             <div>
-        //                 <Button type="submit" className="btn submit-btn" onClick={submitLogin} label="Submit"/>
-        //             </div>
-        //             <div className="register-now">Don't have an Account? <NavLink to="/register">Register Now</NavLink></div>
-        //         </form>
-        //     </div>
-        //     <Toast ref={toast} position="bottom-left"/>
-        // </div>
         <div className="page">
             <div className="page-content login">
                 <form className="login-form">
@@ -101,12 +77,12 @@ export const Login = (props: Props) => {
                     <InputText className="inputText inputText-login" type="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
                     <label htmlFor="password">Password</label>
                     </span>
-                    <div className="p-float-label">
+                    <div className="remember-me-checkbox">
                     <Checkbox className="checkbox" id="login-remember-me" checked={rememberMe} onChange={() => setRememberMe(currentState => !currentState)} />
                         <label htmlFor="login-remember-me">&nbsp;Remember&nbsp;Me</label>
                     </div>
                     <div>
-                        <Button type="submit" className="btn submit-btn" onClick={submitLogin} label="Submit"/>
+                        <Button type="submit" className="btn login-btn" onClick={submitLogin} label="Submit"/>
                     </div>
                     <div className="register-now">Don't have an Account? <NavLink to="/register">Register Now</NavLink></div>
                 </form>
