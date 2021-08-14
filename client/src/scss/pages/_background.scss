@@ -9,7 +9,13 @@ body {
     font-size: large;
 }
 
-body.darkmode {
-    color: $text-color-darkmode;
-    background-color: $neutral-background-color-darkmode;
+.background-img {
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.background-img .img {
+    z-index: -1;
+    position: fixed;
+    object-position: 0 -20vh;
 }
