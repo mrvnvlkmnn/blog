@@ -1,4 +1,28 @@
 .btn {
+
+    background-color: $background-color-content;
+    border-width: 2px;
+    border-radius: 0px;
+    border-color: $hover-color;
+    font-family: $font;
+
+    &:hover {
+        border-color: $text-color !important;
+        background-color: $background-color-content !important;
+        color: $hover-color !important;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem $focus-color;
+    }
+
+    &:active {
+        background-color: $background-color-content !important;
+        border-color: $hover-color !important;
+        color: $hover-color !important;
+    }
+
+    &.register-btn,
     &.login-btn {
         margin-bottom: 2rem;
     }

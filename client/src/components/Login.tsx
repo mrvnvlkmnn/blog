@@ -78,7 +78,7 @@ export const Login = (props: Props) => {
                     <label htmlFor="password">Password</label>
                     </span>
                     <div className="remember-me-checkbox">
-                    <Checkbox className="checkbox" id="login-remember-me" checked={rememberMe} onChange={() => setRememberMe(currentState => !currentState)} />
+                        <Checkbox className="checkbox" id="login-remember-me" checked={rememberMe} onChange={() => setRememberMe(currentState => !currentState)} />
                         <label htmlFor="login-remember-me">&nbsp;Remember&nbsp;Me</label>
                     </div>
                     <div>
@@ -87,6 +87,7 @@ export const Login = (props: Props) => {
                     <div className="register-now">Don't have an Account? <NavLink to="/register">Register Now</NavLink></div>
                 </form>
             </div>
+            <Toast position="bottom-left" ref={toast} />
         </div>
     )
 }

@@ -9,6 +9,10 @@
     z-index: 1000;
 }
 
+// .header .responsive {
+//     display: none;
+// }
+
 .header-links a {
     margin-right: 3rem;
 }
@@ -38,3 +42,43 @@ a:hover {
     position: fixed;
     object-position: 0 -20vh;
 }
+
+// @media (max-width: 48em) {
+//     .header input,
+//     .header .burger,
+//     .header .header-links-res {
+//         display: initial;
+//     }
+
+//     .header {
+
+//         .logo,
+//         .header-links {
+//             display: none;
+//         }
+
+//         .responsive {
+//             display: block;
+//             position: relative;
+//             top: 50px;
+//             left: 50px;
+
+//             input {
+//                 display: block;
+//                 width: 40px;
+//                 height: 32px;
+//                 position: absolute;
+//                 top: -7px;
+//                 left: -5px;
+                
+//                 cursor: pointer;
+                
+//                 opacity: 0; // hide this
+//                 z-index: 2000;
+
+//                 -webkit-touch-callout: none;
+//             }
+
+//         }
+//     }
+// }

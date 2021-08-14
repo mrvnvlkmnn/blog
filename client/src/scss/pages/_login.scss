@@ -1,11 +1,14 @@
+.register,
 .login {
     display: flex;
     justify-content: space-around;
 
+    .register-form,
     .login-form {
         display: flex;
         flex-direction: column;
 
+        .register-header,
         .login-header {
             margin-bottom: 3rem;
         }
@@ -14,10 +17,12 @@
             margin-bottom: 2rem;
         }
 
+        .register-checkbox,
         .login-checkbox {
             color:$text-color;
         }    
 
+        .login-now a,
         .register-now a {
             color: $hover-color;
 
@@ -29,6 +34,27 @@
         .remember-me-checkbox {
             margin-bottom: 2rem;
 
+        }
+    }
+
+    .register-form {
+        
+        .register-content {
+            display: flex;
+
+            > div {
+                margin-right: 3rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 48em) {
+    .register {
+        .register-form {
+            .register-content {
+                flex-direction: column;
+            }
         }
     }
 }

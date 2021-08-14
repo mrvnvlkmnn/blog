@@ -2,15 +2,16 @@
 
     font-family: $font;
 
+    &.inputText-register,
     &.inputText-login {
         background-color: $background-color-content;
         border: none;
-        border-bottom: solid $text-color 2px;
+        border-bottom: solid $hover-color 2px;
         border-radius: 0;
         color: $text-color;
 
         &:hover {
-            border-color: $hover-color;
+            border-color: $text-color;
         }
 
         &:focus {

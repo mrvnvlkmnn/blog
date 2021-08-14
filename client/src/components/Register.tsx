@@ -5,6 +5,7 @@ import { Toast } from 'primereact/toast';
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { authenticationService } from '../services/authenticationService';
+import validate from '../services/frontEndValidation';
 
 interface Props {
     darkMode: boolean
@@ -23,27 +24,33 @@ export const Register = (props: Props) => {
 
 
 
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState<any[]>([]);
     // const [usersList, setUsersList] = useState([]);
 
-    const darkmode = props.darkMode ? 'darkmode' : ''
     const toast = useRef<any>(null);
 
-    useEffect(() => {
-    }, [errors])
-
-    const submitLogin = (e: any) => {
+    const submitRegister = (e: any) => {
         e.preventDefault();
         if (!Object.is(password, repeatPassword)) {
             // show error
             return;
         }
 
+        const credentials = {
+            username: username,
+            name: name,
+            surname: surname,
+            email: email,
+            password: password,
+            repeatPassword: repeatPassword,
+            rememberMe: rememberMe
+        }
+
         // Fehlt:
         // response.data.errors
         // response.data.rememberMeToken
         // authenticationService.login({username: username, password: password, rememberMe: rememberMe})
-        authenticationService.register({ username: username, name: name, surname: surname, email: email, password: password, rememberMe: rememberMe})
+        authenticationService.register(credentials)
         .then(response => {
             // const POSITIVE_STATUS_UPPER_BORDER = 299;
             const NEGATIVE_STATUS_LOWER_BORDER = 400;
@@ -71,46 +78,51 @@ export const Register = (props: Props) => {
     }
 
     return(
-        <div className="login-wrapper">
-            <div className={`login ${darkmode}`}>
-                <form className="login-form">
-                    <div className="login-header">Register</div>
-                    <span className={`p-float-label ${darkmode}`}>
-                        <InputText className={`inputText ${darkmode}`} id="username" onChange={(e) => setUsername(e.target.value)}/>
-                        <label htmlFor="username">Username</label>
-                    </span>
-                    <span className={`p-float-label ${darkmode}`}>
-                        <InputText className={`inputText ${darkmode}`} id="name" onChange={(e) => setName(e.target.value)}/>
-                        <label htmlFor="password">First Name*</label>
-                    </span>
-                    <span className={`p-float-label ${darkmode}`}>
-                        <InputText className={`inputText ${darkmode}`} id="name" onChange={(e) => setSurname(e.target.value)}/>
-                        <label htmlFor="password">Last Name*</label>
-                    </span>
-                    <span className={`p-float-label ${darkmode}`}>
-                        <InputText className={`inputText ${darkmode}`} id="name" onChange={(e) => setEmail(e.target.value)}/>
-                        <label htmlFor="password">Email</label>
-                    </span>
-                    <span className={`p-float-label ${darkmode}`}>
-                        <InputText className={`inputText ${darkmode}`} type="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
-                        <label htmlFor="password">Password</label>
-                    </span>
-                    <span className={`p-float-label ${darkmode}`}>
-                        <InputText className={`inputText ${darkmode}`} type="password" id="repeatpassword" onChange={(e) => setRepeatPassword(e.target.value)}/>
-                        <label htmlFor="repeatpassword">Repeat Password</label>
-                    </span>
-                    <div className={`login-checkbox ${darkmode}`}>
-                        <Checkbox className={`checkbox ${darkmode}`} id="login-remember-me" checked={rememberMe} onChange={() => setRememberMe(currentState => !currentState)} />
-                        <label htmlFor="login-remember-me">&nbsp;Remember&nbsp;Me</label>
+        <div className="page">
+            <div className="page-content register">
+                <form className="register-form">
+                    <div className="register-header">Register</div>
+                    <div className="register-content">
+                        <div className="column-1">
+                            <span className="p-float-label">
+                                <InputText className="inputText inputText-register" id="username" onChange={(e) => setUsername(e.target.value)}/>
+                                <label htmlFor="username">Username</label>
+                            </span>
+                            <span className="p-float-label">
+                                <InputText className="inputText inputText-register" id="name" onChange={(e) => setName(e.target.value)}/>
+                                <label htmlFor="name">First Name*</label>
+                            </span>
+                            <span className="p-float-label">
+                                <InputText className="inputText inputText-register" id="name" onChange={(e) => setSurname(e.target.value)}/>
+                                <label htmlFor="surname">Last Name*</label>
+                            </span>
+                            <span className="p-float-label">
+                                <InputText className="inputText inputText-register" id="email" onChange={(e) => setEmail(e.target.value)} />
+                                <label htmlFor="email">Email*</label>
+                            </span>
+                        </div>
+                        <div className="column-2">
+                            <span className="p-float-label">
+                                <InputText className="inputText inputText-register" type="password" id="password" onChange={(e) => setPassword(e.target.value)}/>
+                                <label htmlFor="password">Password</label>
+                            </span>
+                            <span className="p-float-label">
+                                <InputText className="inputText inputText-register" type="password" id="repeatpassword" onChange={(e) => setRepeatPassword(e.target.value)}/>
+                                <label htmlFor="repeatpassword">Repeat Password</label>
+                            </span>
+                            <div className="remember-me-checkbox">
+                                <Checkbox className="checkbox" id="register-remember-me" checked={rememberMe} onChange={() => setRememberMe(currentState => !currentState)} />
+                                <label htmlFor="register-remember-me">&nbsp;Remember&nbsp;Me</label>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <Button type="submit" className="btn submit-btn" onClick={submitLogin} label="Submit"/>
+                    <div className="register-submit">
+                        <Button type="submit" className="btn register-btn" onClick={submitRegister} label="Submit"/>
                     </div>
-                    <div className="optional">*&nbsp;Optional</div>
-                    <div className="register-now">Already&nbsp;have&nbsp;an&nbsp;Account?&nbsp;<NavLink to="/login">Login&nbsp;now</NavLink></div>
+                    <div className="login-now">Already have an Account? <NavLink to="/login">Login Now</NavLink></div>
                 </form>
             </div>
-            <Toast ref={toast} position="bottom-left"/>
+            <Toast position="bottom-left" ref={toast} />
         </div>
     )
 }

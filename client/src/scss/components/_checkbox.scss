@@ -3,14 +3,14 @@
     .p-checkbox-box {
         border-radius: 0;
         background-color: $background-color-content;
-        border-color: $text-color;
+        border-color: $hover-color;
 
         &.p-highlight {
             border-color: $hover-color;
             background-color: $background-color-content;
         }
         &.p-highlight:hover {
-            border-color: $hover-color !important;
+            border-color: $text-color !important;
         }
 
         .p-checkbox-icon {
@@ -30,7 +30,7 @@
         }
 
         .p-checkbox-box:hover {
-            border-color: $hover-color !important;
+            border-color: $text-color !important;
         }
 
         .p-checkbox-box.p-focus {
