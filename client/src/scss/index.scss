@@ -6,28 +6,13 @@
 // Variables
     @import 'variables.scss';
 
-// Styles
-
-// To be deleted (Rework)
-// @import './pages/_header.scss';
-// @import './pages/_home.scss';
-// @import './pages/_menuButtons.scss';
-// @import './pages/_login.scss';
-// @import './components/_button.scss';
-// @import './components/_textInput.scss';
-// @import './components/_checkbox.scss';
-// @import './components/_toast.scss';
-
-// Rework
-
-
+// Pages
     @import './pages/_background';
     @import './pages/header';
     @import './pages/defaultPage';
     @import './pages/login';
 
 // Components
-
     @import './components/button';
     @import './components/textInput';
     @import './components/checkbox';

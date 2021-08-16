@@ -80,8 +80,10 @@ app.post("/api/loginUser", (req, res) => {
                     error: 'Password does not match'
                 });
             }
+        }).catch(err => {
+            console.log(err);
+        })
     })
-})
 
 // Register User
 app.post("/api/registerUser", (req, res) => {
@@ -105,6 +107,8 @@ app.post("/api/registerUser", (req, res) => {
             }
             res.status(200).send({ username: username, name: name, surname: surname, email: email});
         } )
+    }).catch(err => {
+        console.log(err);
     });
 });
 
@@ -148,6 +152,8 @@ app.post("/api/changePassword", (req, res) => {
             console.log(err);
             res.status(400).send({ message: "Your old Password does not match."});
         })
+    }).catch(err => {
+        console.log(err);
     })
 })
 

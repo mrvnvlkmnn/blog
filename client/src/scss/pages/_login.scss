@@ -25,6 +25,7 @@
         .login-now a,
         .register-now a {
             color: $hover-color;
+            text-decoration: none;
 
             &:hover {
                 text-decoration: underline;
@@ -49,7 +50,7 @@
     }
 }
 
-@media (max-width: 48em) {
+@media (max-width: $breakpoint) {
     .register {
         .register-form {
             .register-content {

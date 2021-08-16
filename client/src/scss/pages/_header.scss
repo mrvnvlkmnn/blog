@@ -120,7 +120,7 @@
             }
         }
 
-        @media (min-width: 48em) {
+        @media (min-width: $breakpoint) {
 
             box-shadow: none;
             background-color: transparent;

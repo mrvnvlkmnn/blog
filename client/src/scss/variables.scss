@@ -1,31 +1,7 @@
-// Lightmode
-    $main-color: #c5e1a5;
-    $light-color: #f8ffd7;
-    $dark-color: #94af76;
-
-    // $input-border-color: #ced4da;
-
-    $neutral-background-color: white;
-    $content-background-color: white;
-
-    // $text-color: black;
-
-// Darkmode
-    $main-color-darkmode: #1c2017;
-    $light-color-darkmode: #23241e;
-    $dark-color-darkmode: #151911;
-
-    $input-border-color-darkmode: #a4afba;
-
-    // $neutral-background-color-darkmode: #4a4a4a;
-    $content-background-color-darkmode: #292929;
     
-    $text-color-darkmode: white;
-    
-    // General
+// General
     $shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
-    // For Rework
     $font: "Josefin Sans", sans-serif;
     $font-logo: "WindSong", cursive;
 
@@ -40,5 +16,7 @@
 // Event
     $hover-color: orange;
     $focus-color: rgb(253, 223, 166);
+
+    $breakpoint: 50em;
 
 
